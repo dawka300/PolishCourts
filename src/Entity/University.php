@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UniversityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table(name="universities")
@@ -19,12 +20,14 @@ class University
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @Assert\NotBlank(message="Podaj nazwę uniwersytetu")
+     * @ORM\Column(type="string", length=200, unique=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank(message="Podaj kod uniwersytetu")
+     * @ORM\Column(type="string", length=30, unique=true)
      */
     private $code;
 
