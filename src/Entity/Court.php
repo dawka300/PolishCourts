@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CourtRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -45,6 +47,22 @@ class Court
      * @ORM\Column(type="text", nullable=true)
      */
     private $information;
+
+    /**
+     * @var DateTime $contentChanged
+     *
+     * @ORM\Column(name="content_changed", type="datetime", nullable=true)
+     * @Gedmo\Timestampable(on="change", field={"court_name", "court_code", "appeal", "circuit", "information"})
+     */
+    private $contentChanged;
+
+    /**
+     * @var string $contentChangedBy
+     *
+     * @ORM\Column(name="content_changed_by", type="string", nullable=true)
+     * @Gedmo\Blameable(on="change", field={"court_name", "court_code", "appeal", "circuit", "information"})
+     */
+    private $contentChangedBy;
 
     public function getId(): ?int
     {
@@ -107,6 +125,30 @@ class Court
     public function setInformation(?string $information): self
     {
         $this->information = $information;
+
+        return $this;
+    }
+
+    public function getContentChanged(): ?\DateTimeInterface
+    {
+        return $this->contentChanged;
+    }
+
+    public function setContentChanged(?\DateTimeInterface $contentChanged): self
+    {
+        $this->contentChanged = $contentChanged;
+
+        return $this;
+    }
+
+    public function getContentChangedBy(): ?string
+    {
+        return $this->contentChangedBy;
+    }
+
+    public function setContentChangedBy(?string $contentChangedBy): self
+    {
+        $this->contentChangedBy = $contentChangedBy;
 
         return $this;
     }
