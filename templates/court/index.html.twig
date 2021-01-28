@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Court index{% endblock %}
+
+{% block body %}
+    <h1>Court index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Court_name</th>
+                <th>Court_code</th>
+                <th>Appeal</th>
+                <th>Circuit</th>
+                <th>Information</th>
+                <th>ContentChanged</th>
+                <th>ContentChangedBy</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for court in courts %}
+            <tr>
+                <td>{{ court.id }}</td>
+                <td>{{ court.courtName }}</td>
+                <td>{{ court.courtCode }}</td>
+                <td>{{ court.appeal }}</td>
+                <td>{{ court.circuit }}</td>
+                <td>{{ court.information }}</td>
+                <td>{{ court.contentChanged ? court.contentChanged|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ court.contentChangedBy }}</td>
+                <td>
+                    <a href="{{ path('court_show', {'id': court.id}) }}">show</a>
+                    <a href="{{ path('court_edit', {'id': court.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('court_new') }}">Create new</a>
+{% endblock %}
