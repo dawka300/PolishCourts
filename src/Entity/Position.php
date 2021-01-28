@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PositionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -31,6 +32,12 @@ class Position
      */
     private $code_position;
 
+    /**
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,6 +63,18 @@ class Position
     public function setCodePosition(string $code_position): self
     {
         $this->code_position = $code_position;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?\DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(\DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
 
         return $this;
     }
