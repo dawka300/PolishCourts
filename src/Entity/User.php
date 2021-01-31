@@ -35,7 +35,12 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Assert\NotBlank(message="Proszę podac hasło")
+     * @Assert\NotBlank(message="Proszę podać hasło")
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+
+    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -96,6 +101,16 @@ class User implements UserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     /**
