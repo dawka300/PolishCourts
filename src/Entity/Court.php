@@ -25,13 +25,13 @@ class Court
      * @Assert\NotBlank(message="Podaj nazwę sądu")
      * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $court_name;
+    private $courtName;
 
     /**
      * @Assert\NotBlank(message="Podaj kod sądu")
      * @ORM\Column(type="string", length=30, unique=true)
      */
-    private $court_code;
+    private $courtCode;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
@@ -71,24 +71,24 @@ class Court
 
     public function getCourtName(): ?string
     {
-        return $this->court_name;
+        return $this->courtName;
     }
 
     public function setCourtName(string $court_name): self
     {
-        $this->court_name = $court_name;
+        $this->courtName = $court_name;
 
         return $this;
     }
 
     public function getCourtCode(): ?string
     {
-        return $this->court_code;
+        return $this->courtCode;
     }
 
     public function setCourtCode(string $court_code): self
     {
-        $this->court_code = $court_code;
+        $this->courtCode = $court_code;
 
         return $this;
     }

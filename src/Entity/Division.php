@@ -22,12 +22,12 @@ class Division
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $division_name;
+    private $divisionName;
 
     /**
      * @ORM\Column(type="string", length=50, unique=true)
      */
-    private $division_code;
+    private $divisionCode;
 
     /**
      * @ORM\Column(name="updated", type="datetime")
@@ -42,24 +42,24 @@ class Division
 
     public function getDivisionName(): ?string
     {
-        return $this->division_name;
+        return $this->divisionName;
     }
 
     public function setDivisionName(string $division_name): self
     {
-        $this->division_name = $division_name;
+        $this->divisionName = $division_name;
 
         return $this;
     }
 
     public function getDivisionCode(): ?string
     {
-        return $this->division_code;
+        return $this->divisionCode;
     }
 
     public function setDivisionCode(string $division_code): self
     {
-        $this->division_code = $division_code;
+        $this->divisionCode = $division_code;
 
         return $this;
     }

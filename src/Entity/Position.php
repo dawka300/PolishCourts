@@ -24,13 +24,13 @@ class Position
      * @Assert\NotBlank(message="Podaj nazwę stanowiska")
      * @ORM\Column(type="string", length=150, unique=true)
      */
-    private $name_position;
+    private $namePosition;
 
     /**
      * @Assert\NotBlank(message="Podaj kod stanowiska")
      * @ORM\Column(type="string", length=50, unique=true)
      */
-    private $code_position;
+    private $codePosition;
 
     /**
      * @ORM\Column(name="updated", type="datetime")
@@ -45,24 +45,24 @@ class Position
 
     public function getNamePosition(): ?string
     {
-        return $this->name_position;
+        return $this->namePosition;
     }
 
     public function setNamePosition(string $name_position): self
     {
-        $this->name_position = $name_position;
+        $this->namePosition = $name_position;
 
         return $this;
     }
 
     public function getCodePosition(): ?string
     {
-        return $this->code_position;
+        return $this->codePosition;
     }
 
     public function setCodePosition(string $code_position): self
     {
-        $this->code_position = $code_position;
+        $this->codePosition = $code_position;
 
         return $this;
     }
