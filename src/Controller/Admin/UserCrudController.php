@@ -25,7 +25,7 @@ class UserCrudController extends AbstractCrudController
             ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN')
             ->setPermission(Action::EDIT, 'ROLE_SUPER_ADMIN')
             ->update(CRUD::PAGE_INDEX, Action::NEW, function (Action $action) {
-               return $action->setLabel('Dodaj użytkownika');
+               return $action->setLabel('Add user');
             });
     }
 
@@ -34,10 +34,10 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
-            TextField::new('email')->setLabel('Email'),
-            TextField::new('name')->setLabel('Nazwa'),
-            ArrayField::new('roles')->setLabel('Rola'),
-            BooleanField::new('isVerified')->setLabel('Czy zweryfikowany'),
+            TextField::new('email'),
+            TextField::new('name'),
+            ArrayField::new('roles'),
+            BooleanField::new('isVerified'),
         ];
     }
 

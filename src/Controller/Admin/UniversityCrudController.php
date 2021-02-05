@@ -17,8 +17,8 @@ class UniversityCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name')->setLabel('Nazwa uniwersytetu'),
-            TextField::new('code')->setLabel('Kod'),
+            TextField::new('name'),
+            TextField::new('code'),
         ];
     }
 

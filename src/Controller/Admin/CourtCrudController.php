@@ -20,10 +20,7 @@ class CourtCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN')
-            ->update(CRUD::PAGE_INDEX, Action::NEW, function (Action $action) {
-                return $action->setLabel('Dodaj sąd');
-            });
+            ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN');
     }
 
 
@@ -31,10 +28,10 @@ class CourtCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id'),
-            TextField::new('courtName')->setLabel('Nazwa sądu'),
-            TextField::new('courtCode')->setLabel('Kod sądu'),
-            TextField::new('appeal')->setLabel('Apelacja'),
-            TextField::new('circuit')->setLabel('Okręg'),
+            TextField::new('courtName'),
+            TextField::new('courtCode'),
+            TextField::new('appeal'),
+            TextField::new('circuit'),
         ];
     }
 

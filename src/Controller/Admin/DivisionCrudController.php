@@ -17,8 +17,8 @@ class DivisionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('divisionName')->setLabel('Nazwa wydziału'),
-            TextField::new('divisionCode')->setLabel('Kod wydziału'),
+            TextField::new('divisionName'),
+            TextField::new('divisionCode'),
         ];
     }
 

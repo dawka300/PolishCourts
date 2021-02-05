@@ -17,8 +17,8 @@ class PositionCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('namePosition')->setLabel('Nazwa funkcji'),
-            TextField::new('codePosition')->setLabel('Kod funkcji'),
+            TextField::new('namePosition'),
+            TextField::new('codePosition'),
         ];
     }
 
