@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DivisionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -34,6 +36,16 @@ class Division
      * @Gedmo\Timestampable(on="update")
      */
     private $updated;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Judge::class, mappedBy="nameDivision")
+     */
+    private $judges;
+
+    public function __construct()
+    {
+        $this->judges = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -72,6 +84,36 @@ class Division
     public function setUpdated(\DateTimeInterface $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Judge[]
+     */
+    public function getJudges(): Collection
+    {
+        return $this->judges;
+    }
+
+    public function addJudge(Judge $judge): self
+    {
+        if (!$this->judges->contains($judge)) {
+            $this->judges[] = $judge;
+            $judge->setNameDivision($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJudge(Judge $judge): self
+    {
+        if ($this->judges->removeElement($judge)) {
+            // set the owning side to null (unless already changed)
+            if ($judge->getNameDivision() === $this) {
+                $judge->setNameDivision(null);
+            }
+        }
 
         return $this;
     }

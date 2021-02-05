@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CourtRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -63,6 +65,16 @@ class Court
      * @Gedmo\Blameable(on="change", field={"court_name", "court_code", "appeal", "circuit", "information"})
      */
     private $contentChangedBy;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Judge::class, mappedBy="workplace")
+     */
+    private $judges;
+
+    public function __construct()
+    {
+        $this->judges = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +161,36 @@ class Court
     public function setContentChangedBy(?string $contentChangedBy): self
     {
         $this->contentChangedBy = $contentChangedBy;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Judge[]
+     */
+    public function getJudges(): Collection
+    {
+        return $this->judges;
+    }
+
+    public function addJudge(Judge $judge): self
+    {
+        if (!$this->judges->contains($judge)) {
+            $this->judges[] = $judge;
+            $judge->setWorkplace($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJudge(Judge $judge): self
+    {
+        if ($this->judges->removeElement($judge)) {
+            // set the owning side to null (unless already changed)
+            if ($judge->getWorkplace() === $this) {
+                $judge->setWorkplace(null);
+            }
+        }
 
         return $this;
     }

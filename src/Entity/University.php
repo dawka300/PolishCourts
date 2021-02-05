@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UniversityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -31,6 +33,16 @@ class University
      */
     private $code;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Judge::class, mappedBy="graduationUniversity")
+     */
+    private $judges;
+
+    public function __construct()
+    {
+        $this->judges = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -56,6 +68,36 @@ class University
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Judge[]
+     */
+    public function getJudges(): Collection
+    {
+        return $this->judges;
+    }
+
+    public function addJudge(Judge $judge): self
+    {
+        if (!$this->judges->contains($judge)) {
+            $this->judges[] = $judge;
+            $judge->setGraduationUniversity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeJudge(Judge $judge): self
+    {
+        if ($this->judges->removeElement($judge)) {
+            // set the owning side to null (unless already changed)
+            if ($judge->getGraduationUniversity() === $this) {
+                $judge->setGraduationUniversity(null);
+            }
+        }
 
         return $this;
     }
