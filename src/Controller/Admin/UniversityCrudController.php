@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\University;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class UniversityCrudController extends AbstractCrudController
 {
@@ -12,14 +13,13 @@ class UniversityCrudController extends AbstractCrudController
         return University::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('name')->setLabel('Nazwa uniwersytetu'),
+            TextField::new('code')->setLabel('Kod'),
         ];
     }
-    */
+
 }

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Position;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PositionCrudController extends AbstractCrudController
 {
@@ -12,14 +13,13 @@ class PositionCrudController extends AbstractCrudController
         return Position::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('namePosition')->setLabel('Nazwa funkcji'),
+            TextField::new('codePosition')->setLabel('Kod funkcji'),
         ];
     }
-    */
+
 }

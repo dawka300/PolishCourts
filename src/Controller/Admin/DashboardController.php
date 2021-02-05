@@ -17,8 +17,9 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $routeBuilder = $this->get(AdminUrlGenerator::class);
+//        dd($this->isGranted('ROLE_ADMIN'));
 
-        return $this->redirect($routeBuilder->setController(DivisionCrudController::class)->generateUrl());
+        return $this->redirect($routeBuilder->setController(CourtCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -29,11 +30,15 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::section('Główne ustawienia');
         yield MenuItem::linktoDashboard('Strona główna', 'fa fa-home');
-         yield MenuItem::linkToCrud('Wydziały', 'fas fa-list', DivisionCrudController::getEntityFqcn());
-         yield MenuItem::linkToCrud('Stanowisko', 'fas fa-list', PositionCrudController::getEntityFqcn());
-         yield MenuItem::linkToCrud('Uczelnie', 'fas fa-list', UniversityCrudController::getEntityFqcn());
-         yield MenuItem::linkToCrud('Użytownicy', 'fas fa-list', UserCrudController::getEntityFqcn());
-        yield MenuItem::linkToLogout('Logout', 'fa fa-exit');
+        yield MenuItem::linkToCrud('Użytownicy', 'fas fa-user', UserCrudController::getEntityFqcn());
+
+        yield MenuItem::section('Dodatkowe ustawienia');
+         yield MenuItem::linkToCrud('Wydziały', 'fas fa-university', DivisionCrudController::getEntityFqcn());
+         yield MenuItem::linkToCrud('Stanowisko', 'fas fa-building', PositionCrudController::getEntityFqcn());
+         yield MenuItem::linkToCrud('Uczelnie', 'fas fa-graduation-cap', UniversityCrudController::getEntityFqcn());
+        yield MenuItem::section('Wyjście');
+        yield MenuItem::linkToLogout('Logout', 'fa fa-sign-out');
     }
 }

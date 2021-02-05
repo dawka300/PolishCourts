@@ -3,7 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Court;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CourtCrudController extends AbstractCrudController
 {
@@ -12,14 +17,25 @@ class CourtCrudController extends AbstractCrudController
         return Court::class;
     }
 
-    /*
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->setPermission(Action::DELETE, 'ROLE_SUPER_ADMIN')
+            ->update(CRUD::PAGE_INDEX, Action::NEW, function (Action $action) {
+                return $action->setLabel('Dodaj sąd');
+            });
+    }
+
+
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('courtName')->setLabel('Nazwa sądu'),
+            TextField::new('courtCode')->setLabel('Kod sądu'),
+            TextField::new('appeal')->setLabel('Apelacja'),
+            TextField::new('circuit')->setLabel('Okręg'),
         ];
     }
-    */
+
 }
