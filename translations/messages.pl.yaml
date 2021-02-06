@@ -1,31 +1,45 @@
-Main settings: Główne ustawienia
-Additional settings: Dodatkowe ustawienia
-Main page: Strona główna
-Judges: Sędziowie
-Users: Użytkownicy
-Judge: Sędzia
-Divisions: Wydziały
-Positions: Stanowiska
-Universities: Uczelnie
-Exit: Wyjście
-Logout: Wyloguj
-User: Użytkownik
-ID: ID
-Email: Email
-Name: Nazwa
-Roles: Role
-Is Verified: Czy potwierdzony
 Add user: Dodaj użytkownika
-Division: Wydział
-Division Name: Nazwa wydziału
-Division Code: Numer wydziału
-Court: Sąd
-Court Name: Nazwa sądu
-Court Code: Kod sądu
+Additional Information: Dodatkowe informacje
+Additional settings: Dodatkowe ustawienia
 Appeal: Apelacja
+Birth Date: Data urodzenia
 Circuit: Okręg
-Position: Stanowisko
-Name Position: Nazwa stanowiska
 Code Position: Kod stanowiska
-University: Uniwersytet
 Code: Kod
+Court Code: Kod sądu
+Court Name: Nazwa sądu
+Court: Sąd
+Delegated From: Oddelegowany z
+Delegated To: Oddelegowany do
+Division Code: Numer wydziału
+Division Name: Nazwa wydziału
+Division: Wydział
+Divisions: Wydziały
+Email: Email
+Exit: Wyjście
+First Name: Imię
+Graduation Date: Data ukończenia
+Graduation University: Universytet
+ID: ID
+Is Verified: Czy potwierdzony
+Judge: Sędzia
+Judges: Sędziowie
+Last Name: Nazwisko
+Logout: Wyloguj
+Main page: Strona główna
+Main settings: Główne ustawienia
+Name Division: Nazwa wydziału
+Name Position: Nazwa stanowiska
+Name: Nazwa
+Number Division: Numer wydziału
+Position: Stanowisko
+Positions: Stanowiska
+Roles: Role
+Second Name: Drugie imię
+Since Current Court: O.K. obecny sąd
+Since Judge: O.K. sędzia
+Universities: Uczelnie
+University: Uniwersytet
+User: Użytkownik
+Users: Użytkownicy
+Workplace: Miejsce pracy

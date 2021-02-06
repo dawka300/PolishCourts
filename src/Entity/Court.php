@@ -194,4 +194,9 @@ class Court
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->courtName;
+    }
 }

@@ -226,12 +226,12 @@ class Judge
         return $this;
     }
 
-    public function getDelegatedTo(): ?\DateTimeInterface
+    public function getDelegatedTo(): ?Court
     {
         return $this->delegatedTo;
     }
 
-    public function setDelegatedTo(?\DateTimeInterface $delegatedTo): self
+    public function setDelegatedTo(?Court $delegatedTo): self
     {
         $this->delegatedTo = $delegatedTo;
 
