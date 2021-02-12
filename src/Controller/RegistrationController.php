@@ -57,7 +57,7 @@ class RegistrationController extends AbstractController
                         ->from(new Address('admin@twojsedzia.pl', 'Witryna Twoj Sedzia'))
                         ->to($user->getEmail())
                         ->subject('Please Confirm your Email')
-                        ->htmlTemplate('fronted/registration/confirmation_email.html.twig')
+                        ->htmlTemplate('fronted/security/confirmation_email.html.twig')
                 );
                 // do anything else you need here, like send an email
 
@@ -69,13 +69,15 @@ class RegistrationController extends AbstractController
                 );
         }
 
-        return $this->render('fronted/registration/register.html.twig', [
+        return $this->render('fronted/security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/verify/email", name="app_verify_email")
+     * @param Request $request
+     * @return Response
      */
     public function verifyUserEmail(Request $request): Response
     {
