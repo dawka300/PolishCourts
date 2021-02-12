@@ -113,6 +113,11 @@ class Judge
      */
     private $updated;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, mappedBy="judge", cascade={"persist", "remove"})
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -318,6 +323,28 @@ class Judge
     public function setUpdated(\DateTimeInterface $updated): self
     {
         $this->updated = $updated;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($user === null && $this->user !== null) {
+            $this->user->setJudge(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($user !== null && $user->getJudge() !== $this) {
+            $user->setJudge($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }
