@@ -25,7 +25,7 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @Assert\NotBlank(message="Proszę podać email")
+     * @Assert\NotBlank(message="Proszę podać email", groups={"registration"})
      * @Assert\Email()
      * @ORM\Column(type="string", length=180, unique=true)
      */
@@ -37,7 +37,7 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @Assert\NotBlank(message="Proszę podać hasło")
+     * @Assert\NotBlank(message="Proszę podać hasło", groups={"registration"})
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
@@ -226,5 +226,10 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

@@ -6,6 +6,7 @@ Birth Date: Data urodzenia
 Circuit: Okręg
 Code Position: Kod stanowiska
 Code: Kod
+Content: Zawartość
 Court Code: Kod sądu
 Court Name: Nazwa sądu
 Court: Sąd
@@ -34,6 +35,8 @@ Name: Nazwa
 Number Division: Numer wydziału
 Position: Stanowisko
 Positions: Stanowiska
+Post: Wpis
+Posts: Wpisy
 Roles: Role
 Second Name: Drugie imię
 Since Current Court: O.K. obecny sąd

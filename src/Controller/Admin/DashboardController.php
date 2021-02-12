@@ -33,6 +33,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Main page', 'fa fa-home');
         yield MenuItem::linkToCrud('Judges', 'fas fa-id-card', JudgeCrudController::getEntityFqcn());
         yield MenuItem::linkToCrud('Users', 'fas fa-user', UserCrudController::getEntityFqcn());
+        yield MenuItem::linkToCrud('Posts', 'fas fa-file', PostCrudController::getEntityFqcn());
 
         yield MenuItem::section('Additional settings');
          yield MenuItem::linkToCrud('Divisions', 'fas fa-university', DivisionCrudController::getEntityFqcn());
