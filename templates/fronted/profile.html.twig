@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FrontedController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron-fluid">Jakiś tekst</div>
+        {% for court in courts %}
+            <p>{{ court.courtName }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
