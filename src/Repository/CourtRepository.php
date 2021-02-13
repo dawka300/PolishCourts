@@ -64,7 +64,7 @@ class CourtRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Court[] Returns an array of Court objects
+     * @return Court[]|null Returns an array of Court objects
      */
     public function findMilitaryCourts(): ?array
     {
