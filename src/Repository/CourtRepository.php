@@ -22,29 +22,57 @@ class CourtRepository extends ServiceEntityRepository
     // /**
     //  * @return Court[] Returns an array of Court objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+  /*  public function findByCode($value)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.courtCode = :val')
             ->setParameter('val', $value)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
-    }
-    */
+    }*/
 
-    /*
-    public function findOneBySomeField($value): ?Court
+
+
+    public function findOneByCode($value): ?Court
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
+            ->andWhere('c.courtCode = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+    * @return Court[] Returns an array of Court objects
     */
+
+    public function findAdministrativeCourts(): ?array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.courtName like :val1')
+            ->setParameter('val1', 'Wojewódzki%')
+            ->orWhere('c.courtName like :val2')
+            ->setParameter('val2', 'Naczelny%')
+            ->getQuery()
+            ->getResult();
+
+    }
+
+    /**
+     * @return Court[] Returns an array of Court objects
+     */
+    public function findMilitaryCourts(): ?array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.courtName like :val1')
+            ->setParameter('val1', 'Wojskowy%')
+            ->getQuery()
+            ->getResult();
+
+    }
 }
